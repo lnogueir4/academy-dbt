@@ -9,6 +9,7 @@ models:
           - not_null
           - unique
       - name: data_venda
+      - name: dia_mes
       - name: nome_do_dia
       - name: nome_do_mes
       - name: nome_trimestre

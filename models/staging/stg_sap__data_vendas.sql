@@ -51,6 +51,7 @@ with
             id_venda
             , data_venda
             --, dia_da_semana
+            , dia_mes
             , nome_do_dia
             --, mes
             , nome_do_mes

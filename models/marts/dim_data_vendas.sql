@@ -3,6 +3,7 @@ with
         select
             id_venda
             , data_venda
+            , dia_mes
             , nome_do_dia
             , nome_do_mes
             , nome_trimestre
