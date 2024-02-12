@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: sap_adw
+    description: fonte erp sap Adventures Works
+    tables:
+      - name: address
+      - name: stateprovince   
+      - name: countryregion
+      - name: salesterritory
