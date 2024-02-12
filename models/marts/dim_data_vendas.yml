@@ -1,0 +1,17 @@
+version: 2
+models:
+  - name: dim_data_vendas
+    description: Dimensão de data de vendas da AW.
+    columns:
+      - name: id_venda
+        description: chave pri venda
+        tests:
+          - not_null
+          - unique
+      - name: data_venda
+      - name: dia_mes
+      - name: nome_do_dia
+      - name: nome_do_mes
+      - name: nome_trimestre
+      - name: dia_do_ano
+      - name: ano

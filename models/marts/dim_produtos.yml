@@ -1,0 +1,12 @@
+version: 2
+models:
+  - name: dim_produtos
+    description: Dimensão de produtos da AW.
+    columns:
+      - name: id_produto
+        description: chave pri produto
+        tests:
+          - not_null
+          - unique
+      - name: nome_produto
+        description: < >
