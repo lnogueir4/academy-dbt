@@ -8,14 +8,14 @@ with
     , stg_pessoas as (
         select
             id_pessoa
-            , nome_cliente
+            , nome_pessoa
         from {{ ref('stg_sap__pessoas') }}
     )
     , joined_tabelas as (
         select
             stg_clientes.id_cliente
-            , stg_pessoas.id_pessoa          
-            , stg_pessoas.nome_cliente 
+            --, stg_pessoas.id_pessoa          
+            , stg_pessoas.nome_pessoa as nome_cliente
         from stg_clientes
         left join stg_pessoas on
             stg_clientes.id_pessoa = stg_pessoas.id_pessoa

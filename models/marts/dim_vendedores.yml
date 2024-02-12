@@ -1,0 +1,16 @@
+version: 2
+models:
+  - name: dim_vendedores
+    description: Dimensão de vendedores da AW.
+    columns:
+      - name: id_vendedor
+        description: chave pri vendedor na tabela de vendas
+        tests:
+          - not_null
+          - unique
+      - name: id_empregado
+        description: < >
+      - name: id_pessoa
+        description: < >
+      - name: nome_pessoa
+        description: < >
