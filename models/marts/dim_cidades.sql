@@ -8,23 +8,23 @@ with
     , stg_estados as (
         select
             id_estado
-            , nome_estado
             , id_pais
-            , id_territorio
+            , nome_estado
         from {{ ref('stg_sap__estados') }}
     )
     , stg_cidades as (
         select
-            nome_cidade
+            id_cidade
             , id_estado
+            , nome_cidade
         from {{ ref('stg_sap__cidades') }}
     )
     , joined_tabelas as (
-        select distinct
-            stg_cidades.nome_cidade          
+        select
+            stg_cidades.id_cidade
+            , stg_cidades.nome_cidade          
             , stg_estados.nome_estado 
             , stg_pais.nome_pais
-            , stg_estados.id_territorio
         from stg_estados
         left join stg_cidades on
             stg_estados.id_estado = stg_cidades.id_estado
