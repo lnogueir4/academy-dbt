@@ -10,5 +10,5 @@ models:
           - unique
       - name: id_pessoa
         description: < >
-      - name: nome_cliente
+      - name: nome_pessoa
         description: < >

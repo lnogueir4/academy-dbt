@@ -1,0 +1,12 @@
+version: 2
+models:
+  - name: dim_cartoes
+    description: Dimensão de cartoes da AW.
+    columns:
+      - name: id_cartao
+        description: chave pri cartao
+        tests:
+          - not_null
+          - unique
+      - name: bandeira_cartao
+        description: < >

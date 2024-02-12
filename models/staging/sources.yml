@@ -11,3 +11,6 @@ sources:
       - name: person
       - name: salesorderheadersalesreason
       - name: salesreason
+      - name: salesperson
+      - name: employee
+      - name: creditcard
