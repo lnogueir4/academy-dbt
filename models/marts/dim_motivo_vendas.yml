@@ -1,0 +1,14 @@
+version: 2
+models:
+  - name: dim_motivo_vendas
+    description: Dimensão de motivo de vendas da AW.
+    columns:
+      - name: id_venda
+        description: chave pri da venda na tabela de vendas
+        tests:
+          - not_null
+          #- unique
+      - name: id_motivo_venda
+        description: < >
+      - name: motivo_venda
+        description: < >

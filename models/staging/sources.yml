@@ -7,4 +7,7 @@ sources:
       - name: address
       - name: stateprovince   
       - name: countryregion
-      - name: salesterritory
+      - name: customer
+      - name: person
+      - name: salesorderheadersalesreason
+      - name: salesreason

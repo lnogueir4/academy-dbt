@@ -1,0 +1,14 @@
+version: 2
+models:
+  - name: dim_clientes
+    description: Dimensão de clientes da AW.
+    columns:
+      - name: id_cliente
+        description: chave pri cliente na tabela de vendas
+        tests:
+          - not_null
+          - unique
+      - name: id_pessoa
+        description: < >
+      - name: nome_cliente
+        description: < >

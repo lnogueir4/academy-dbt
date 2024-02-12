@@ -1,10 +1,12 @@
 version: 2
 models:
   - name: dim_cidades
-    description: Dimensão de cidades da AW. Uma linha por cidade, com informações de estado e pais.
+    description: Dimensão de cidades da AW. com informações de estado e pais.
     columns:
+      - name: id_cidade
+        description: chave pri Cidade
       - name: nome_cidade
-        description: Chave primária da dimensão de cidades.
+        description: < >
       - name: id_estado
         description: <>
       - name: id_pais
@@ -13,5 +15,4 @@ models:
         description: <Falta Completar>
       - name: nome_pais
         description: <Falta Completar>
-      - name: id_territorio
-        description: <chave que vem da fato venda>
+
