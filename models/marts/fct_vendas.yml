@@ -1,0 +1,18 @@
+version: 2
+models:
+  - name: fct_vendas
+    description: fato vendas
+    columns:
+      - name: sk_venda_detalhe
+        description: chave surrogate venda com detalhe
+        tests:
+          - not_null
+          - unique
+      - name: id_venda
+        description: chave pri venda / order
+
+      - name: id_venda_detalhe
+        description: chave pri venda detalhe / order detail
+        tests:
+          - not_null
+          - unique
