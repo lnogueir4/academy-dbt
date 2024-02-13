@@ -1,0 +1,17 @@
+version: 2
+models:
+  - name: int_vendas__vendas_detalhes
+    description: intermediaria - pre fato vendas
+    columns:
+      - name: sk_venda_detalhe
+        description: have surrogate da tabela venda com detalhe
+        tests:
+          - not_null
+          - unique
+              
+      - name: id_venda_detalhe
+        description: chave pri venda detalhe / order detail
+        tests:
+          - not_null
+          - unique
+              

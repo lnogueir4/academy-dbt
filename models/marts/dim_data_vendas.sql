@@ -3,12 +3,12 @@ with
         select
             id_venda
             , data_venda
-            , dia_mes
-            , nome_do_dia
-            , nome_do_mes
-            , nome_trimestre
-            , dia_do_ano
-            , ano
+            , dia_mes_venda
+            , nome_dia_venda
+            , nome_mes_venda
+            , nome_trimestre_venda
+            , dia_ano_venda
+            , ano_venda
         from {{ ref('stg_sap__data_vendas') }}
     )
 
