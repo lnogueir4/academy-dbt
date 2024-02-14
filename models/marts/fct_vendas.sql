@@ -15,10 +15,6 @@ with
         select *
         from {{ ref('dim_data_vendas') }}
     )
-    /*, motivo_vendas as (
-        select *
-        from {{ ref('dim_motivo_vendas') }}
-    )*/
     , produtos as (
         select *
         from {{ ref('dim_produtos') }}
@@ -43,7 +39,7 @@ with
             , int_vendas.eh_venda_online
             , int_vendas.id_cliente
             , int_vendas.id_vendedor
-            , int_vendas.id_cidade_venda
+            , int_vendas.id_cidade
             , int_vendas.id_cartao
             , int_vendas.subtotal_venda
             , int_vendas.total_imposto
@@ -59,19 +55,17 @@ with
             , int_vendas.teve_desconto
             , int_vendas.qte_total_venda
             --
-            --cartoes.id_cartao
+            --, cartoes.id_cartao
             , cartoes.bandeira_cartao
             --
-            --cidades.id_cidade
+            --, cidades.id_cidade
             , cidades.nome_cidade
             , cidades.nome_estado
             , cidades.nome_pais
             --
-            --clientes.id_cliente
+            --, clientes.id_cliente
             , clientes.nome_cliente
             --
-            --data_vendas.id_venda
-            --data_vendas.data_venda
             , data_vendas.dia_mes_venda
             , data_vendas.nome_dia_venda
             , data_vendas.nome_mes_venda
@@ -79,27 +73,21 @@ with
             , data_vendas.dia_ano_venda
             , data_vendas.ano_venda 
             --
-            --motivo_vendas.id_venda
-            --motivo_vendas.id_motivo_venda
-            --, motivo_vendas.motivo_venda
-            --
-            --produtos.id_produto
+            --, produtos.id_produto
             , produtos.nome_produto
             --
-            --vendedores.id_vendedor
+            --, vendedores.id_vendedor
             , vendedores.nome_vendedor
             , 
         from int_vendas
         left join cartoes on
             int_vendas.id_cartao =  cartoes.id_cartao
         left join cidades on
-            int_vendas.id_cidade_venda =  cidades.id_cidade
+            int_vendas.id_cidade =  cidades.id_cidade
         left join clientes on
             int_vendas.id_cliente =  clientes.id_cliente
         left join data_vendas on
             int_vendas.id_venda =  data_vendas.id_venda
-        --left join motivo_vendas on
-        --    int_vendas.id_venda =  motivo_vendas.id_venda
         left join produtos on
             int_vendas.id_produto =  produtos.id_produto
         left join vendedores on
@@ -111,12 +99,14 @@ with
             , conta_pedido
             , id_venda
             --
+            , id_cliente
             , nome_cliente
             --
             , data_venda
             , data_venct
             , data_envio
             --
+            , id_cidade
             , nome_cidade
             , nome_estado
             , nome_pais
@@ -124,6 +114,7 @@ with
             , status_venda
             , eh_venda_online
             --
+            , id_produto
             , nome_produto
             --
             , subtotal_venda
@@ -139,11 +130,11 @@ with
             , teve_desconto
             , qte_total_venda
             --
+            , id_vendedor
             , nome_vendedor
             --
+            , id_cartao
             , bandeira_cartao
-            --
-            --, motivo_venda
             --
             , dia_mes_venda
             , nome_dia_venda

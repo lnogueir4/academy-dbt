@@ -17,7 +17,7 @@ with
             , vendas.eh_venda_online
             , vendas.id_cliente
             , vendas.id_vendedor
-            , vendas.id_cidade_venda
+            , vendas.id_cidade
             , vendas.id_cartao
             , vendas.subtotal_venda
             , vendas.total_imposto

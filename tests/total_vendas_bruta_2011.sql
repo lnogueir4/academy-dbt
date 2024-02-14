@@ -10,14 +10,3 @@ with
 select total_bruto_vendido
 from vendas_em_2011
 where total_bruto_vendido  not between 12646112 and 12646113
-
-/*
-select sum(subtotal_venda) as subtotal_salesorder
-from {{ ref('fct_vendas') }}
-
-select sum(subtotal_venda) as subtotal_salesorder
-from {{ ref('stg_sap__vendas') }}
-
-select sum(preco_total_bruto) as total_detail
-from {{ ref('fct_vendas') }}
-*/
