@@ -72,3 +72,15 @@ sources:
             tests:
               - unique
               - not_null
+      - name: productsubcategory
+        columns:
+          - name: productsubcategoryid
+            tests:
+              - unique
+              - not_null
+      - name: productcategory
+        columns:
+          - name: productcategoryid
+            tests:
+              - unique
+              - not_null
