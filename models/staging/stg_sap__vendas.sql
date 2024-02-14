@@ -16,7 +16,7 @@ with
             , cast(customerid as int) as id_cliente
             , cast(salespersonid as int) as id_vendedor
             --, cast(territoryid as int) as id_territorio
-            , cast(billtoaddressid as int) as id_cidade_venda
+            , cast(billtoaddressid as int) as id_cidade
             --, cast(shiptoaddressid as int) as id_cidade_envio
             --, cast(shipmethodid as int) as id_tipo_frete
             , cast(creditcardid as int) as id_cartao

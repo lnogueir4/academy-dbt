@@ -7,6 +7,13 @@ with
     , stg_empregados as (
         select
             id_empregado
+            , cargo
+            , data_nasc
+            , estado_civil
+            , genero
+            , data_admissao
+            , horas_de_ferias
+            , horas_de_afastamento
         from {{ ref('stg_sap__empregados') }}
     )
     , stg_pessoas as (
@@ -18,9 +25,14 @@ with
     , joined_tabelas as (
         select
             stg_vendedores.id_vendedor
-            --, stg_empregados.id_empregado
-            --, stg_pessoas.id_pessoa      
             , stg_pessoas.nome_pessoa as nome_vendedor
+            , stg_empregados.cargo
+            , stg_empregados.data_nasc
+            , stg_empregados.estado_civil
+            , stg_empregados.genero
+            , stg_empregados.data_admissao
+            , stg_empregados.horas_de_ferias
+            , stg_empregados.horas_de_afastamento    
         from stg_vendedores
         left join stg_empregados on
             stg_vendedores.id_vendedor = stg_empregados.id_empregado
