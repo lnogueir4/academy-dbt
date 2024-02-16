@@ -5,6 +5,9 @@ models:
     columns:
       - name: id_cidade
         description: chave pri Cidade
+        tests:
+          - not_null
+          - unique
       - name: nome_cidade
         description: < >
       - name: id_estado
