@@ -16,3 +16,7 @@ models:
         tests:
           - not_null
           - unique
+      - name: id_cidade
+        description: chave pri cidade
+        tests:
+          - not_null

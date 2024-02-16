@@ -1,38 +1,42 @@
 with
     stg_pais as (
         select
-            id_pais
-            , nome_pais
+            *
         from {{ ref('stg_sap__pais') }}
     )
     , stg_estados as (
         select
-            id_estado
-            , id_pais
-            , nome_estado
+            *
         from {{ ref('stg_sap__estados') }}
     )
     , stg_cidades as (
         select
-            id_cidade
-            , id_estado
-            , nome_cidade
+            *
         from {{ ref('stg_sap__cidades') }}
     )
-    , joined_tabelas as (
+    , joined_cidade_estado as (
         select
             stg_cidades.id_cidade
             , stg_cidades.nome_cidade          
             , stg_estados.nome_estado 
-            , stg_pais.nome_pais
-        from stg_estados
-        left join stg_cidades on
-            stg_estados.id_estado = stg_cidades.id_estado
-        left join stg_pais on
-            stg_estados.id_pais = stg_pais.id_pais
-        
+            , stg_estados.id_estado
+            , stg_estados.id_pais
+        from stg_cidades
+        left join stg_estados on
+            stg_cidades.id_estado = stg_estados.id_estado
     )
-
+    , joined_cidade_pais as (
+        select
+            joined_cidade_estado.id_cidade
+            , joined_cidade_estado.nome_cidade          
+            , joined_cidade_estado.nome_estado 
+            , joined_cidade_estado.id_estado
+            , stg_pais.nome_pais
+            , stg_pais.id_pais
+        from joined_cidade_estado
+        left join stg_pais on
+            joined_cidade_estado.id_pais = stg_pais.id_pais
+    )
 select *
-from joined_tabelas
+from joined_cidade_pais
 
