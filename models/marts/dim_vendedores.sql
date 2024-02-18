@@ -40,6 +40,11 @@ with
             stg_vendedores.id_vendedor = stg_pessoas.id_pessoa
         
     )
-
+    , final as (
+        select * 
+            , extract(year from current_date) - extract(year from date(data_nasc)) as idade_vendedor
+            , extract(year from current_date) - extract(year from date(data_admissao)) as anos_empresa
+        from joined_tabelas
+    )
 select *
-from joined_tabelas
+from final
