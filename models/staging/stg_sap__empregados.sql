@@ -6,6 +6,7 @@ with
             , date(birthdate) as data_nasc
             , case
                 when cast(maritalstatus as string) = 'M' then 'C'
+                else 'S'
             end as estado_civil
             , cast(gender as string) as genero
             , date(hiredate) as data_admissao
