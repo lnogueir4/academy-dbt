@@ -34,8 +34,8 @@ with
     )
     , metricas as (
         select
-            cast(id_venda as string) || '-' || cast(id_venda_detalhe as string) as sk_venda_detalhe
-            , dense_rank() over   (order by id_venda) as contagem_pedido
+            dense_rank() over   (order by id_venda) as contagem_pedido
+            , row_number() over   (partition by id_venda) as linha_pedido
             , *
             , qte_venda_detalhe * preco_unitario as preco_total_bruto
             , qte_venda_detalhe * preco_unitario * (1 - desc_perc_unitario) as preco_total_liquido
@@ -46,5 +46,11 @@ with
             , sum   (qte_venda_detalhe) over(partition by id_venda) as qte_total_venda
         from joined_tabelas
     )
+    , final as (
+        select
+            cast(id_venda as string) || '-' || cast(linha_pedido as string) as sk_venda_detalhe
+            , *
+        from metricas
+    )
 select *
-from metricas
+from final

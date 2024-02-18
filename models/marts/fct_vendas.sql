@@ -24,13 +24,15 @@ with
         from {{ ref('dim_vendedores') }}
     )
     , int_vendas as (
-        select *, cast(contagem_pedido as int) as conta_pedido
+        select *
+            , cast(contagem_pedido as int) as conta_pedido
         from {{ ref('int_vendas__vendas_detalhes') }}
     )
     , joined_tabelas as (
         select
             int_vendas.sk_venda_detalhe
             , int_vendas.conta_pedido
+            , int_vendas.linha_pedido
             , int_vendas.id_venda
             , int_vendas.data_venda
             , int_vendas.data_venct
@@ -98,6 +100,7 @@ with
             sk_venda_detalhe
             , conta_pedido
             , id_venda
+            , linha_pedido
             --
             , id_cliente
             , nome_cliente
