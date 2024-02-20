@@ -10,8 +10,18 @@ sources:
             tests:
               - unique
               - not_null
-      - name: stateprovince   
+      - name: stateprovince 
+        columns:
+          - name: stateprovinceid
+            tests:
+              - unique
+              - not_null 
       - name: countryregion
+        columns:
+          - name: countryregioncode
+            tests:
+              - unique
+              - not_null
       - name: customer
         columns:
           - name: customerid
@@ -81,6 +91,12 @@ sources:
       - name: productcategory
         columns:
           - name: productcategoryid
+            tests:
+              - unique
+              - not_null
+      - name: specialoffer
+        columns:
+          - name: specialofferid
             tests:
               - unique
               - not_null

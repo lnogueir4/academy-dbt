@@ -1,28 +1,25 @@
 with
     stg_produtos as (
         select
-            id_produto
-            , nome_produto
-            , id_pro_subcategoria
+            *
         from {{ ref('stg_sap__produtos') }}
     )
     , stg_produtos_subcat as (
         select
-            id_pro_subcategoria
-            , id_pro_categoria
-            , nome_pro_subcategoria
+            *
         from {{ ref('stg_sap__pro_subcategorias') }}
     )
     , stg_produtos_cat as (
         select
-            id_pro_categoria
-            , nome_pro_categoria
+            *
         from {{ ref('stg_sap__pro_categorias') }}
     )
     , joined_tabelas as (
         select
             stg_produtos.id_produto
             , stg_produtos.nome_produto
+            , stg_produtos.custo_std_produto
+            , stg_produtos.preco_lista_produto
             , stg_produtos_subcat.id_pro_subcategoria
             , stg_produtos_subcat.nome_pro_subcategoria
             , stg_produtos_cat.id_pro_categoria
