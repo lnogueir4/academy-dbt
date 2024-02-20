@@ -56,6 +56,11 @@ with
             , int_vendas.preco_total_liquido
             , int_vendas.teve_desconto
             , int_vendas.qte_total_venda
+            , int_vendas.id_oferta_especial
+            , int_vendas.descricao_oferta
+            , int_vendas.desconto_oferta
+            , int_vendas.tipo_oferta
+            , int_vendas.categoria_oferta
             --
             --, cartoes.id_cartao
             , cartoes.bandeira_cartao
@@ -77,6 +82,12 @@ with
             --
             --, produtos.id_produto
             , produtos.nome_produto
+            , produtos.nome_pro_subcategoria
+            , produtos.nome_pro_categoria
+            , int_vendas.custo_std_produto
+            , int_vendas.custo_std_total_produto
+            , int_vendas.preco_lista_produto
+            , int_vendas.preco_lista_total_produto
             --
             --, vendedores.id_vendedor
             , vendedores.nome_vendedor
@@ -119,6 +130,13 @@ with
             --
             , id_produto
             , nome_produto
+            , custo_std_produto
+            , custo_std_total_produto
+            , preco_lista_produto
+            , preco_lista_total_produto
+            , nome_pro_subcategoria
+            , nome_pro_categoria
+
             --
             , subtotal_venda
             , total_imposto
@@ -132,6 +150,11 @@ with
             , preco_total_liquido
             , teve_desconto
             , qte_total_venda
+            , id_oferta_especial
+            , descricao_oferta
+            , desconto_oferta
+            , tipo_oferta
+            , categoria_oferta
             --
             , id_vendedor
             , nome_vendedor

@@ -6,7 +6,7 @@ with
             --, cast(carriertrackingnumber as string) as
             , cast(orderqty as int) as qte_venda_detalhe
             , cast(productid as int) as id_produto
-            --, cast(specialofferid as int) as id_oferta_especial
+            , cast(specialofferid as int) as id_oferta_especial
             , cast(unitprice as numeric) as preco_unitario
             , cast(unitpricediscount as numeric) as desc_perc_unitario
             --, cast(rowguid as int) as

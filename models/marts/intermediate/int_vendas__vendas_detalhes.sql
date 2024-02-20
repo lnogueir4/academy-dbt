@@ -7,6 +7,14 @@ with
         select *
         from {{ ref('stg_sap__vendas') }}
     )
+    , oferta_especial as (
+        select *
+        from {{ ref('stg_sap__venda_ofertas_especiais') }}
+    )
+    , int_produto as (
+        select *
+        from {{ ref('stg_sap__produtos') }}
+    )
     , joined_tabelas as (
         select
             vendas.id_venda
@@ -28,9 +36,20 @@ with
             , venda_detalhes.id_produto
             , venda_detalhes.preco_unitario
             , venda_detalhes.desc_perc_unitario
+            , oferta_especial.id_oferta_especial
+            , oferta_especial.descricao_oferta
+            , oferta_especial.desconto_oferta
+            , oferta_especial.tipo_oferta
+            , oferta_especial.categoria_oferta
+            , int_produto.custo_std_produto
+            , int_produto.preco_lista_produto
         from venda_detalhes
         left join vendas on
             venda_detalhes.id_venda = vendas.id_venda
+        left join oferta_especial on
+            venda_detalhes.id_oferta_especial = oferta_especial.id_oferta_especial
+        left join int_produto on
+            venda_detalhes.id_produto = int_produto.id_produto
     )
     , metricas as (
         select
@@ -44,6 +63,8 @@ with
                 else 'Nao'
             end as teve_desconto
             , sum   (qte_venda_detalhe) over(partition by id_venda) as qte_total_venda
+            , qte_venda_detalhe * custo_std_produto as custo_std_total_produto
+            , qte_venda_detalhe * preco_lista_produto as preco_lista_total_produto
         from joined_tabelas
     )
     , final as (
