@@ -1,0 +1,23 @@
+version: 2
+models:
+  - name: fct_produtos_transacoes
+    description: fato de transacoes com produtos da AW para referencia de custo atual do produto
+    columns:
+      - name: id_transacao
+        description: chave pri transacao na tabela
+        tests:
+          - not_null
+          - unique
+      - name: id_produto
+        description: < >
+      - name: id_venda
+        description: < >
+      - name: linha_pedido
+        description: < >
+      - name: data_transacao
+        description: < >
+      - name: qte_transacao
+        description: < >
+      - name: custo_atual_produto
+        description: < >
+           

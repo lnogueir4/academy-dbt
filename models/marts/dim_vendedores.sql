@@ -1,7 +1,7 @@
 with
     stg_vendedores as (
         select
-            id_vendedor
+            *
         from {{ ref('stg_sap__vendedores') }}
     )
     , stg_empregados as (
@@ -25,6 +25,7 @@ with
     , joined_tabelas as (
         select
             stg_vendedores.id_vendedor
+            , stg_vendedores.id_territorio
             , stg_pessoas.nome_pessoa as nome_vendedor
             , stg_empregados.cargo
             , stg_empregados.data_nasc
