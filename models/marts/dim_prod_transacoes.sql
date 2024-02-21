@@ -1,5 +1,5 @@
 with
-    fct_transacao as (
+    transacao as (
         select
             id_transacao
             , id_produto
@@ -13,4 +13,4 @@ with
     )
 
 select *
-from fct_transacao
+from transacao

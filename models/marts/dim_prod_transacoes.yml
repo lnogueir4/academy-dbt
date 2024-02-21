@@ -1,6 +1,6 @@
 version: 2
 models:
-  - name: fct_produtos_transacoes
+  - name: dim_prod_transacoes
     description: fato de transacoes com produtos da AW para referencia de custo atual do produto
     columns:
       - name: id_transacao

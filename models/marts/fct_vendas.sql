@@ -70,7 +70,6 @@ with
             --, territorios.id_territorio
             , territorios.nome_territorio
             , territorios.codigo_pais
-            , territorios.regiao_territorio
             --
             --, cartoes.id_cartao
             , cartoes.bandeira_cartao
@@ -135,7 +134,6 @@ with
             , id_territorio
             , nome_territorio
             , codigo_pais
-            , regiao_territorio
             , id_cidade
             , nome_cidade
             , nome_estado
