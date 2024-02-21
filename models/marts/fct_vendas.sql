@@ -23,6 +23,10 @@ with
         select *
         from {{ ref('dim_vendedores') }}
     )
+    , territorios as (
+        select *
+        from {{ ref('dim_territorios') }}
+    )
     , int_vendas as (
         select *
             , cast(contagem_pedido as int) as conta_pedido
@@ -41,6 +45,7 @@ with
             , int_vendas.eh_venda_online
             , int_vendas.id_cliente
             , int_vendas.id_vendedor
+            , int_vendas.id_territorio
             , int_vendas.id_cidade
             , int_vendas.id_cartao
             , int_vendas.subtotal_venda
@@ -61,6 +66,11 @@ with
             , int_vendas.desconto_oferta
             , int_vendas.tipo_oferta
             , int_vendas.categoria_oferta
+            --
+            --, territorios.id_territorio
+            , territorios.nome_territorio
+            , territorios.codigo_pais
+            , territorios.regiao_territorio
             --
             --, cartoes.id_cartao
             , cartoes.bandeira_cartao
@@ -105,6 +115,8 @@ with
             int_vendas.id_produto =  produtos.id_produto
         left join vendedores on
             int_vendas.id_vendedor =  vendedores.id_vendedor
+        left join territorios on
+            int_vendas.id_territorio =  territorios.id_territorio
     )
     , final as (
         select
@@ -120,6 +132,10 @@ with
             , data_venct
             , data_envio
             --
+            , id_territorio
+            , nome_territorio
+            , codigo_pais
+            , regiao_territorio
             , id_cidade
             , nome_cidade
             , nome_estado

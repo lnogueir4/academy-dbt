@@ -11,11 +11,11 @@ with
                 when cast(onlineorderflag as string) = 'true' then 'Sim'
                 else 'Nao'
             end as eh_venda_online
-            --, cast(purchaseordernumber as string) as num_pedido_venda
+            --, cast(purchaseordernumber as string) as id_compra
             --, cast(accountnumber as string) as num_conta_venda
             , cast(customerid as int) as id_cliente
             , cast(salespersonid as int) as id_vendedor
-            --, cast(territoryid as int) as id_territorio
+            , cast(territoryid as int) as id_territorio
             , cast(billtoaddressid as int) as id_cidade
             --, cast(shiptoaddressid as int) as id_cidade_envio
             --, cast(shipmethodid as int) as id_tipo_frete

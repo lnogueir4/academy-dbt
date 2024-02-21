@@ -1,0 +1,16 @@
+version: 2
+models:
+  - name: dim_territorios
+    description: Dimensão de territorios de vendas da AW.
+    columns:
+      - name: id_territorio
+        description: chave pri territorio na tabela de vendas
+        tests:
+          - not_null
+          - unique
+      - name: nome_territorio
+        description: < >
+      - name: codigo_pais
+        description: < >
+      - name: regiao_territorio
+        description: < >

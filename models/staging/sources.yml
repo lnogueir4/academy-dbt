@@ -100,3 +100,21 @@ sources:
             tests:
               - unique
               - not_null
+      - name: salesterritory
+        columns:
+          - name: territoryid
+            tests:
+              - unique
+              - not_null
+      - name: store
+        columns:
+          - name: businessentityid
+            tests:
+              - unique
+              - not_null
+      - name: transactionhistory
+        columns:
+          - name: transactionid
+            tests:
+              - unique
+              - not_null
