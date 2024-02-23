@@ -52,7 +52,7 @@ with
         left join int_produto on
             venda_detalhes.id_produto = int_produto.id_produto
     )
-    , metricas as (
+    , metricas1 as (
         select
             dense_rank() over   (order by id_venda) as contagem_pedido
             , row_number() over   (partition by id_venda) as linha_pedido
@@ -68,11 +68,37 @@ with
             , qte_venda_detalhe * preco_lista_produto as preco_lista_total_produto
         from joined_tabelas
     )
-    , final as (
+    , metricas2 as (
         select
             cast(id_venda as string) || '-' || cast(linha_pedido as string) as sk_venda_detalhe
             , *
-        from metricas
+            , preco_lista_total_produto - custo_std_total_produto as lucro_previsto
+            , preco_total_liquido - custo_std_total_produto as lucro_obtido
+        from metricas1
     )
+    , metricas3 as (
+        select
+            *
+            , lucro_previsto / preco_lista_total_produto as margem_bruta_prevista
+            , lucro_obtido / preco_total_liquido as margem_bruta_obtida
+        from metricas2
+    )
+    , final as (
+        select
+            *
+            , case
+                when margem_bruta_obtida < 0 then 'Negativa'
+                when margem_bruta_obtida <= 0.009 then 'Zero ou abaixo de 1%'
+                when margem_bruta_obtida <= 0.05 then 'Positiva - 1% até 5%'
+                when margem_bruta_obtida <= 0.15 then 'Positiva - 6% a 15%'
+                when margem_bruta_obtida <= 0.25 then 'Positiva - 16% a 25%'
+                when margem_bruta_obtida <= 0.35 then 'Positiva - 26% a 35%'
+                else 'Acima de 35%'
+            end as margem_status
+            , margem_bruta_obtida - margem_bruta_prevista as dif_margem
+            
+        from metricas3
+    )
+    
 select *
 from final

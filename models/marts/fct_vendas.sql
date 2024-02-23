@@ -97,10 +97,15 @@ with
             , int_vendas.custo_std_total_produto
             , int_vendas.preco_lista_produto
             , int_vendas.preco_lista_total_produto
+            , int_vendas.lucro_previsto
+            , int_vendas.margem_bruta_prevista
+            , int_vendas.lucro_obtido
+            , int_vendas.margem_bruta_obtida
+            , int_vendas.dif_margem
+            , int_vendas.margem_status
             --
             --, vendedores.id_vendedor
             , vendedores.nome_vendedor
-            , 
         from int_vendas
         left join cartoes on
             int_vendas.id_cartao =  cartoes.id_cartao
@@ -144,13 +149,12 @@ with
             --
             , id_produto
             , nome_produto
+            , nome_pro_subcategoria
+            , nome_pro_categoria
             , custo_std_produto
             , custo_std_total_produto
             , preco_lista_produto
             , preco_lista_total_produto
-            , nome_pro_subcategoria
-            , nome_pro_categoria
-
             --
             , subtotal_venda
             , total_imposto
@@ -159,10 +163,16 @@ with
             , id_venda_detalhe
             , qte_venda_detalhe
             , preco_unitario
-            , desc_perc_unitario
             , preco_total_bruto
-            , preco_total_liquido
             , teve_desconto
+            , desc_perc_unitario
+            , preco_total_liquido
+            , lucro_previsto
+            , margem_bruta_prevista
+            , lucro_obtido
+            , margem_bruta_obtida
+            , margem_status
+            , dif_margem
             , qte_total_venda
             , id_oferta_especial
             , descricao_oferta
