@@ -8,7 +8,8 @@ models:
         tests:
           - not_null
           - unique
-      - name: id_pessoa
-        description: < >
-      - name: nome_pessoa
-        description: < >
+      - name: nome_cliente
+      - name: id_territorio        
+      - name: nome_loja
+      - name: tipo_cliente
+        description: se revenda ou consumidor

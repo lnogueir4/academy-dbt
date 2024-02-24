@@ -4,11 +4,10 @@ models:
     description: Dimensão de motivo de vendas da AW.
     columns:
       - name: id_venda
-        description: chave pri da venda na tabela de vendas
+        description: chave pri da venda na tabela de vendas /* nao testa unique pq a relacao com fct vendas eh muitos pra muitos */
         tests:
           - not_null
           #- unique
       - name: id_motivo_venda
-        description: < >
       - name: motivo_venda
-        description: < >
+      - name: tipo_motivo

@@ -9,8 +9,5 @@ models:
           - not_null
           - unique
       - name: nome_territorio
-        description: < >
       - name: codigo_pais
-        description: < >
-      - name: regiao_territorio
-        description: < >
+

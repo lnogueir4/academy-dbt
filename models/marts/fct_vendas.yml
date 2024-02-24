@@ -10,7 +10,6 @@ models:
           - unique
       - name: id_venda
         description: chave pri venda / order
-
       - name: id_venda_detalhe
         description: chave pri venda detalhe / order detail
         tests:

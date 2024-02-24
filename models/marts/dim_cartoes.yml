@@ -9,4 +9,3 @@ models:
           - not_null
           - unique
       - name: bandeira_cartao
-        description: < >

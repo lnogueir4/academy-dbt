@@ -9,13 +9,8 @@ models:
           - not_null
           - unique
       - name: nome_cidade
-        description: < >
       - name: id_estado
-        description: <>
       - name: id_pais
-        description: <Falta Completar>
       - name: nome_estado
-        description: <Falta Completar>
       - name: nome_pais
-        description: <Falta Completar>
 
