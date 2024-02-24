@@ -8,9 +8,15 @@ models:
         tests:
           - not_null
           - unique
-      - name: id_empregado
-        description: < >
-      - name: id_pessoa
-        description: < >
-      - name: nome_pessoa
-        description: < >
+      - name: id_vendedor
+      - name: nome_vendedor
+      - name: id_territorio
+      - name: cargo
+      - name: data_nasc
+      - name: estado_civil
+      - name: genero
+      - name: data_admissao
+      - name: horas_de_ferias
+      - name: horas_de_afastamento
+      - name: idade_vendedor
+      - name: anos_empresa

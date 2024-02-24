@@ -9,4 +9,9 @@ models:
           - not_null
           - unique
       - name: nome_produto
-        description: < >
+      - name: custo_std_produto
+      - name: preco_lista_produto
+      - name: id_pro_subcategoria
+      - name: nome_pro_subcategoria
+      - name: id_pro_categoria
+      - name: nome_pro_categoria
