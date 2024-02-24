@@ -72,14 +72,14 @@ with
         select
             cast(id_venda as string) || '-' || cast(linha_pedido as string) as sk_venda_detalhe
             , *
-            , preco_lista_total_produto - custo_std_total_produto as lucro_previsto
+            , (preco_lista_total_produto * (1- desc_perc_unitario)) - custo_std_total_produto as lucro_previsto_cdesc --considerando o desconto aplicado
             , preco_total_liquido - custo_std_total_produto as lucro_obtido
         from metricas1
     )
     , metricas3 as (
         select
             *
-            , lucro_previsto / preco_lista_total_produto as margem_bruta_prevista
+            , lucro_previsto_cdesc / preco_lista_total_produto as margem_bruta_prevista
             , lucro_obtido / preco_total_liquido as margem_bruta_obtida
         from metricas2
     )
@@ -92,7 +92,7 @@ with
                 when margem_bruta_obtida <= 0.05 then 'Positiva - 1% até 5%'
                 when margem_bruta_obtida <= 0.15 then 'Positiva - 6% a 15%'
                 when margem_bruta_obtida <= 0.25 then 'Positiva - 16% a 25%'
-                when margem_bruta_obtida <= 0.35 then 'Positiva - 26% a 35%'
+                when margem_bruta_obtida <= 0.355 then 'Positiva - 26% a 35%'
                 else 'Acima de 35%'
             end as margem_status
             , margem_bruta_obtida - margem_bruta_prevista as dif_margem
