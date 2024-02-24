@@ -97,7 +97,7 @@ with
             , int_vendas.custo_std_total_produto
             , int_vendas.preco_lista_produto
             , int_vendas.preco_lista_total_produto
-            , int_vendas.lucro_previsto
+            , int_vendas.lucro_previsto_cdesc
             , int_vendas.margem_bruta_prevista
             , int_vendas.lucro_obtido
             , int_vendas.margem_bruta_obtida
@@ -167,7 +167,7 @@ with
             , teve_desconto
             , desc_perc_unitario
             , preco_total_liquido
-            , lucro_previsto
+            , lucro_previsto_cdesc
             , margem_bruta_prevista
             , lucro_obtido
             , margem_bruta_obtida
